@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-deployment
+  labels:
+    app: portfolio-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-website
+  template:
+    metadata:
+      labels:
+        app: portfolio-website
+    spec:
+      containers:
+      - name: portfolio-container
+        image: maheshtodkar/myresume-website:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
